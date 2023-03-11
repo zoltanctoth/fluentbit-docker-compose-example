@@ -1,2 +1,2 @@
 # fluentbit-docker-compose-example
-Create a multiple-output JSON logger with docker and fluent bit
+Create a simple JSON logger with docker and fluent bit
