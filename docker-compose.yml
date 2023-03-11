@@ -1,0 +1,23 @@
+version: "3"
+services:
+  log_emitter:
+    build: ./log_emitter
+    links:
+      - fluentbit
+    depends_on:
+      - fluentbit
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: localhost:24224
+        tag: log_emitter_tag
+
+  fluentbit:
+    build: ./fluentbit
+    volumes:
+      - ./logs:/logs
+    ports:
+      - "24224:24224"
+      - "24224:24224/udp"
+    logging:
+      driver: none
